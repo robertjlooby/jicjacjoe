@@ -12,3 +12,4 @@ How To Run The Tests
 4. open your browser to http://127.0.0.1:65001/jijx
 5. in the ijx terminal, run `load 'spec/spec_helper.ijs'`
 6. then run `runSpecs ''` (may require installing packages) 
+7. to run a single spec file (for example `spec/board_test.ijs`) run `runSpecs 'board'`
