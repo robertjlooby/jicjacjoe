@@ -7,6 +7,10 @@ create =: 3 : 0
   diagIndexes =: cutIndexes < ;. 2 (2 # i. size)
 )
 
+move =: 4 : 0
+  state =. y (<x) } state
+)
+
 allRows =: 3 : 0
   state , (|: state) , (diagIndexes { state) ,: (diagIndexes { |. state)
 )
@@ -17,6 +21,11 @@ rowWinner =: 3 : 0
 
 winner =: 3 : 0
   rowWinner y
+)
+
+full =: 3 : 0
+  hasEmptySpot =. +./ , '-' = state
+  -. hasEmptySpot
 )
 
 destroy =: codestroy
