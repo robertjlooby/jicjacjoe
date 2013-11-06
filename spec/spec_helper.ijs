@@ -1,5 +1,7 @@
 arreq_z_ =: 4 : '*/ , x = y'
 
+matches_z_ =: 4 : '+./ x rxE y'
+
 require 'general/unittest'
 runSpec =: 3 : 0
   unittest 'spec/', y
