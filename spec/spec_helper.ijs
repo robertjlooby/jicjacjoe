@@ -1,5 +1,4 @@
 arreq_z_ =: 4 : '*/ , x = y'
-display_z_ =: 3 : 'y (1!:2) 2'
 
 require 'general/unittest'
 runSpec =: 3 : 0
