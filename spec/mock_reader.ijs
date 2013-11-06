@@ -1,4 +1,4 @@
-coclass 'MockWriter'
+coclass 'MockReader'
 
 create =: 3 : 0
   nextLine =: ''
