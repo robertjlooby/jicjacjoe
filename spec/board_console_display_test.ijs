@@ -1,12 +1,10 @@
 load 'spec/spec_helper.ijs'
+load 'spec/mock_writer.ijs'
 load 'src/board_console_display.ijs'
 
-mockwriter_z_ =: 3 : 0
-  lastwritten_z_ =: y
-)
-
 before_all =: 3 : 0
-  BCD =: 'mockwriter_z_' conew 'BoardConsoleDisplay'
+  mockwriter =: '' conew 'MockWriter'
+  BCD =: mockwriter conew 'BoardConsoleDisplay'
 
   ex =: xcel__BCD
   oh =: ocel__BCD
@@ -60,9 +58,9 @@ test_boardForEmpty =: 3 : 0
 test_displayAnEmptyBoard =: 3 : 0
   state =. 3 3 $ '-'
   display__BCD state
-  assert emptyBoard arreq lastwritten
+  assert emptyBoard arreq lastwritten__mockwriter
 
   state =. 4 4 $ '-'
   display__BCD state
-  assert emptyBoard4 arreq lastwritten
+  assert emptyBoard4 arreq lastwritten__mockwriter
 )

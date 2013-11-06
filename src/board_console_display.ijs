@@ -1,11 +1,8 @@
 coclass 'BoardConsoleDisplay'
 
 create =: 3 : 0
-  if. # y do.
-    writer =: y
-  else.
-    writer =: 'smoutput'
-  end.
+  writer =: y
+
   vdiv =: 3 1 $ '|'
   hdiv =: 1 3 $ '-'
   cdiv =: '+'
@@ -48,7 +45,7 @@ boardFor =: 3 : 0
 )
 
 display =: 3 : 0
-  (writer~) boardFor y
+  write__writer boardFor y
 )
 
 destroy =: codestroy
