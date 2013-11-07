@@ -7,7 +7,7 @@ create =: 3 : 0
 )
 
 takeTurn =: 3 : 0
-  display__boardDisplay ''
+  display__boardDisplay state__board
   currentPlayer =. 0{players
   move =. getMove__currentPlayer state__board
   move move__board symbol__currentPlayer

@@ -5,6 +5,7 @@ create =: 3 : 0
 )
 
 display =: 3 : 0
+  displayLastCalledWith =: y
   timesDisplayed =: >: timesDisplayed
 )
 

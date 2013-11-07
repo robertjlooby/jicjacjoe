@@ -60,6 +60,14 @@ test_shouldDisplayTheBoardEachTurn =: 3 : 0
   end.
 ) 
 
+test_shouldPassTheBoardStateToTheDisplay =: 3 : 0
+  for. i.9 do.
+    boardState =. state__board
+    takeTurn__game ''
+    assert boardState arreq displayLastCalledWith__boardDisplay
+  end.
+)
+
 test_shouldUpdateTheBoardWithMovesEachTurn =: 3 : 0
   for_i. i.9 do.
     currentPlayer =. 0{players
