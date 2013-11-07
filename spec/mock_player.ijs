@@ -7,6 +7,7 @@ create =: 3 : 0
 )
 
 getMove =: 3 : 0
+  lastCalledGetMoveWith =: y
   timesCalledGetMove =: >: timesCalledGetMove
   move =: > {. moves
   moves =: }. moves
