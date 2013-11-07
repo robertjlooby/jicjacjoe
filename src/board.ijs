@@ -8,7 +8,7 @@ create =: 3 : 0
 )
 
 move =: 4 : 0
-  state =. y (<x) } state
+  state =: y (<x) } state
 )
 
 allRows =: 3 : 0
