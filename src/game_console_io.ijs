@@ -21,6 +21,10 @@ promptForBoardSize =: 3 : 0
   write__writer 'What size board would you like to play on (ex. 3x3 or 4x4)? (an integer 3 or larger)'
 )
 
+promptForPlayAgain =: 3 : 0
+  write__writer 'Would you like to play again? (yes or no)'
+)
+
 getYorN =: 3 : 0
   response =. read__reader ''
   # '[Yy]' rxfirst response

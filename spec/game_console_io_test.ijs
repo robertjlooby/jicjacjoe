@@ -34,6 +34,11 @@ test_promptForBoardSize =: 3 : 0
   assert 'size board' matches lastwritten__writer
 )
 
+test_promptForPlayAgain =: 3 : 0
+  promptForPlayAgain__io ''
+  assert 'play again' matches lastwritten__writer
+)
+
 test_itGetsyes =: 3 : 0
   nextLine__reader =: 'yes'
   
