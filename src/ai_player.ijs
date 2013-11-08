@@ -1,9 +1,7 @@
 coclass 'AIPlayer'
 
 create =: 3 : 0
-  board     =: > 0{y
-  symbol    =: > 1{y
-  oppSymbol =: > 2{y
+  'board symbol oppSymbol' =: y
 )
 
 evaluateScore =: 3 : 0
@@ -22,7 +20,7 @@ evaluateScore =: 3 : 0
 
 getMove =: 3 : 0
   move =. (symbol; _1; 1) minimax y
-  > (0 1) { move
+  > }: move
 )
 
 minimax =: 4 : 0
@@ -38,15 +36,14 @@ minimax =: 4 : 0
 getNextScore =: 4 : 0
   score =. evaluateScore y
   if. score = '-' do.
-    score =. > 2 { x minimax y
+    score =. > {: x minimax y
   end.
   score
 )
 
 getMaxMove =: 4 : 0
   'alpha beta' =. x
-  nextRow =. _1
-  nextCol =. _1
+  nextRow =. ] nextCol =. _1
   for_cel. emptyCells y do.
     row =. <. cel % 3
     col =. 3 | cel
@@ -70,8 +67,7 @@ getMaxMove =: 4 : 0
 
 getMinMove =: 4 : 0
   'alpha beta' =. x
-  nextRow =. _1
-  nextCol =. _1
+  nextRow =. ] nextCol =. _1
   for_cel. emptyCells y do.
     row =. <. cel % 3
     col =. 3 | cel
