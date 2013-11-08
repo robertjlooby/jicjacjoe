@@ -48,11 +48,11 @@ getMaxMove =: 4 : 0
     row =. <. cel % 3
     col =. 3 | cel
     nextScore =. (oppSymbol; alpha; beta) getNextScore symbol (<row, col) } y
-    if. (nextScore > beta) +. (nextScore = beta) do.
+    if. nextScore >: beta do.
       (row; col; nextScore)
       return.
     end.
-    if. nextRow = _1 *. ((nextScore < alpha) +. nextScore = alpha) do.
+    if. (nextRow = _1) *. nextScore <: alpha do.
       nextRow   =. row
       nextCol   =. col
     end.
@@ -72,11 +72,11 @@ getMinMove =: 4 : 0
     row =. <. cel % 3
     col =. 3 | cel
     nextScore =. (symbol; alpha; beta) getNextScore oppSymbol (<row, col) } y
-    if. (nextScore < alpha) +. (nextScore = alpha) do.
+    if. nextScore <: alpha do.
       (row; col; nextScore)
       return.
     end.
-    if. nextRow = _1 *. ((nextScore > beta) +. nextScore = beta) do.
+    if. (nextRow = _1) *. nextScore >: beta do.
       nextRow   =. row
       nextCol   =. col
     end.
