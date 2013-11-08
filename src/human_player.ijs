@@ -9,7 +9,8 @@ getMove =: 3 : 0
   size =. {. $ y
   maxMove =. <: *: size
   promptForMove__io ''
-  move =. ". readMove__io ''
+  moveStr =. '[-_]?[[:digit:]]+' rxfirst '', readMove__io ''
+  move =. _1". moveStr
   if. (move > maxMove) +. (move < 0) do.
     notifyInvalidCell__io ''
     move =. getMove y

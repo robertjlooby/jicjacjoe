@@ -40,3 +40,9 @@ test_getMoveRePromptsIfCellGivenIsFilled =: 3 : 0
   assert (2 2) arreq getMove__xplayer state
   assert ('readMove'; 'promptForMove'; 'notifyInvalidCell'; 'readMove'; 'promptForMove'; 'none') = lastCalled__mockio
 )
+
+test_getMoveParsesOutIntegerPart =: 3 : 0
+  responses__mockio =: '  ahh 5.32asdf'; '8'
+  state =. 3 3 $ '-'
+  assert (1 2) arreq getMove__xplayer state
+)
