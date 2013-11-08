@@ -41,23 +41,15 @@ test_anyColWins =: 3 : 0
   end.
 )
 
-test_diagIndexes =: 3 : 0
-  B =. '' conew 'Board'
-  assert (0 0 ; 1 1 ; 2 2) = diagIndexes__B
-
-  B =. 5 conew 'Board'
-  assert (0 0 ; 1 1 ; 2 2 ; 3 3 ; 4 4) = diagIndexes__B
-)
-
 test_anyDiagWins =: 3 : 0
   diagIndexes =. (, > 5 # (<0 1)) < ;. 2 (2 # i. 5)
   B =. 5 conew 'Board'
-  state__B =. 'x' diagIndexes__B} state__B
+  state__B =. 'x' diagIndexes} state__B
   assert winner__B 'x'
 
-  B =. 5 conew 'Board'
-  state__B =. |. 'x' diagIndexes__B} state__B
-  assert winner__B 'x'
+  B =. 4 conew 'Board'
+  state__B =. |. 'o' (}: diagIndexes) } state__B
+  assert winner__B 'o'
 )
 
 test_moveAltersBoardState =: 3 : 0
