@@ -19,6 +19,7 @@ evaluateScore =: 3 : 0
 )
 
 getMove =: 3 : 0
+  size =: {. $ y
   move =. (symbol; _1; 1) minimax y
   > }: move
 )
@@ -45,8 +46,8 @@ getMaxMove =: 4 : 0
   'alpha beta' =. x
   nextRow =. ] nextCol =. _1
   for_cel. emptyCells y do.
-    row =. <. cel % 3
-    col =. 3 | cel
+    row =. <. cel % size
+    col =. size | cel
     nextScore =. (oppSymbol; alpha; beta) getNextScore symbol (<row, col) } y
     if. nextScore >: beta do.
       (row; col; nextScore)
@@ -69,8 +70,8 @@ getMinMove =: 4 : 0
   'alpha beta' =. x
   nextRow =. ] nextCol =. _1
   for_cel. emptyCells y do.
-    row =. <. cel % 3
-    col =. 3 | cel
+    row =. <. cel % size
+    col =. size | cel
     nextScore =. (symbol; alpha; beta) getNextScore oppSymbol (<row, col) } y
     if. nextScore <: alpha do.
       (row; col; nextScore)

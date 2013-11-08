@@ -55,6 +55,7 @@ test_shouldChooseLastCellWhenOnlyCellLeft =: 3 : 0
   assert 0 2 -: getMove__xplayer 3 3 $ 'ox-xooxox'
   assert 1 2 -: getMove__xplayer 3 3 $ 'oxoox-xox'
   assert 0 1 -: getMove__xplayer 3 3 $ 'o-xxxooox'
+  assert 3 3 -: getMove__xplayer 4 4 $ 'xxooooxxxxoooox-'
 )
 
 test_shouldChooseWinningMove =: 3 : 0
