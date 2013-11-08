@@ -27,9 +27,9 @@ getMove =: 3 : 0
 
 minimax =: 4 : 0
   if. symbol = x do.
-    move =. x getMaxMove y
+    move =. getMaxMove y
   else.
-    move =. x getMinMove y
+    move =. getMinMove y
   end.
   move
 )
@@ -42,7 +42,7 @@ getNextScore =: 4 : 0
   score
 )
 
-getMaxMove =: 4 : 0
+getMaxMove =: 3 : 0
   maxScore =. _2
   for_cel. emptyCells y do.
     row =. <. cel % 3
@@ -57,7 +57,7 @@ getMaxMove =: 4 : 0
   (maxRow; maxCol; maxScore)
 )
 
-getMinMove =: 4 : 0
+getMinMove =: 3 : 0
   minScore =. 2
   for_cel. emptyCells y do.
     row =. <. cel % 3
