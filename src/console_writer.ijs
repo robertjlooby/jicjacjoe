@@ -10,7 +10,7 @@ create =: 3 : 0
 )
 
 write =: 3 : 0
-  output y
+  output ,"1&LF y
 )
 
 destroy =: codestroy

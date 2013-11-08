@@ -10,10 +10,10 @@ after_each =: 3 : 0
   1!:55 fileno
 )
 
-test_itWritesToTheGivenOutputStream =: 3 : 0
+test_itWritesToTheGivenOutputStreamWithLFs =: 3 : 0
   test_text =. 'this is some test text'
   write__writer test_text
-  assert (1!:1 fileno) = test_text
+  assert (1!:1 fileno) = test_text, LF
 )
 
 test_itDefaultsToWritingToSTDOUT =: 3 : 0
