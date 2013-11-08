@@ -21,15 +21,16 @@ evaluateScore =: 3 : 0
 )
 
 getMove =: 3 : 0
-  move =. symbol minimax y
+  move =. (symbol; _1; 1) minimax y
   > (0 1) { move
 )
 
 minimax =: 4 : 0
-  if. symbol = x do.
-    move =. getMaxMove y
+  'moveSymbol alpha beta' =. x
+  if. symbol = moveSymbol do.
+    move =. (alpha; beta) getMaxMove y
   else.
-    move =. getMinMove y
+    move =. (alpha; beta) getMinMove y
   end.
   move
 )
@@ -42,34 +43,54 @@ getNextScore =: 4 : 0
   score
 )
 
-getMaxMove =: 3 : 0
-  maxScore =. _2
+getMaxMove =: 4 : 0
+  'alpha beta' =. x
+  nextRow =. _1
+  nextCol =. _1
   for_cel. emptyCells y do.
     row =. <. cel % 3
     col =. 3 | cel
-    nextScore =. oppSymbol getNextScore symbol (<row, col) } y
-    if. maxScore < nextScore do.
-      maxScore =. nextScore
-      maxRow   =. row
-      maxCol   =. col
+    nextScore =. (oppSymbol; alpha; beta) getNextScore symbol (<row, col) } y
+    if. (nextScore > beta) +. (nextScore = beta) do.
+      (row; col; nextScore)
+      return.
+    end.
+    if. nextRow = _1 *. ((nextScore < alpha) +. nextScore = alpha) do.
+      nextRow   =. row
+      nextCol   =. col
+    end.
+    if. nextScore > alpha do.
+      alpha =. nextScore
+      nextRow   =. row
+      nextCol   =. col
     end.
   end.
-  (maxRow; maxCol; maxScore)
+  (nextRow; nextCol; alpha)
 )
 
-getMinMove =: 3 : 0
-  minScore =. 2
+getMinMove =: 4 : 0
+  'alpha beta' =. x
+  nextRow =. _1
+  nextCol =. _1
   for_cel. emptyCells y do.
     row =. <. cel % 3
     col =. 3 | cel
-    nextScore =. symbol getNextScore oppSymbol (<row, col) } y
-    if. minScore > nextScore do.
-      minScore =. nextScore
-      minRow   =. row
-      minCol   =. col
+    nextScore =. (symbol; alpha; beta) getNextScore oppSymbol (<row, col) } y
+    if. (nextScore < alpha) +. (nextScore = alpha) do.
+      (row; col; nextScore)
+      return.
+    end.
+    if. nextRow = _1 *. ((nextScore > beta) +. nextScore = beta) do.
+      nextRow   =. row
+      nextCol   =. col
+    end.
+    if. nextScore < beta do.
+      beta =. nextScore
+      nextRow   =. row
+      nextCol   =. col
     end.
   end.
-  (minRow; minCol; minScore)
+  (nextRow; nextCol; beta)
 )
 
 emptyCells =: 3 : 0
