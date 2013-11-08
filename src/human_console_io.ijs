@@ -6,7 +6,7 @@ create =: 3 : 0
 )
 
 promptForMove =: 3 : 0
-  write__writer 'Where would you like to move? (enter the cell number)'
+  write__writer 'Where would you like to move? (enter the cell number, followed by `enter` and ^d)'
 )
 
 notifyInvalidCell =: 3 : 0
