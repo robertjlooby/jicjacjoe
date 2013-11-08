@@ -49,7 +49,7 @@ test_shouldPassTheBoardStateToThePlayer =: 3 : 0
     boardState =. state__board
     currentPlayer =. 0{players__game
     takeTurn__game ''
-    assert boardState arreq lastCalledGetMoveWith__currentPlayer
+    assert boardState -: lastCalledGetMoveWith__currentPlayer
   end.
 )
 
@@ -64,7 +64,7 @@ test_shouldPassTheBoardStateToTheDisplay =: 3 : 0
   for. i.9 do.
     boardState =. state__board
     takeTurn__game ''
-    assert boardState arreq displayLastCalledWith__boardDisplay
+    assert boardState -: displayLastCalledWith__boardDisplay
   end.
 )
 

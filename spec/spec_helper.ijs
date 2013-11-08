@@ -1,5 +1,3 @@
-arreq_z_ =: 4 : '*/ , x = y'
-
 matches_z_ =: 4 : '+./ x rxE y'
 
 p_z_ =: smoutput

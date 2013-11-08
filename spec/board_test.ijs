@@ -9,7 +9,7 @@ test_createSizeDefaultsTo3 =: 3 : 0
 test_createInitsWithSizeEmptyboard =: 3 : 0
   B =. 5 conew 'Board'
   assert 5 = size__B
-  assert 5 5 $ '-' arreq state__B
+  assert 5 5 $ '-' -: state__B
 )
 
 test_winnerFalseForEmptyBoard =: 3 : 0
@@ -66,15 +66,15 @@ test_moveAltersBoardState =: 3 : 0
 
   expected =. 'x' (<0 0) } expected
   0 0 move__B 'x'
-  assert expected arreq state__B
+  assert expected -: state__B
 
   expected =. 'o' (<1 1) } expected
   1 1 move__B 'o'
-  assert expected arreq state__B
+  assert expected -: state__B
 
   expected =. 'x' (<4 4) } expected
   4 4 move__B 'x'
-  assert expected arreq state__B
+  assert expected -: state__B
 )
 
 test_fullReturnsFalseForAnEmptyBoard =: 3 : 0
