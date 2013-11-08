@@ -12,10 +12,10 @@ takeTurn =: 3 : 0
   move =. getMove__currentPlayer state__board
   move move__board symbol__currentPlayer
   players =: |. players
-  if. full__board '' do.
-    result =. '-'
-  elseif. winner__board symbol__currentPlayer do.
+  if. winner__board symbol__currentPlayer do.
     result =. symbol__currentPlayer
+  elseif. full__board '' do.
+    result =. '-'
   elseif. 1 do.
     result =. 0
   end.

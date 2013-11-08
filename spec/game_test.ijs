@@ -106,6 +106,13 @@ test_shouldReturnoForPlayerOWin =: 3 : 0
   assert 'o' = result
 )
 
+test_shouldReturnxForPlayerXWinOnLastMove =: 3 : 0
+  state__board =: 3 3 $ 'xx-ooxoxo'
+  moves__player1 =: <0 2
+  result =. takeTurn__game ''
+  assert 'x' = result
+)
+
 test_shouldTake9TurnsOnA3x3Board =: 3 : 0
   play__game ''
   assert 5 = timesCalledGetMove__player1
