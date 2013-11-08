@@ -14,8 +14,12 @@ diagonalOf =: 3 : 0
   > (<: size) { obliques
 )
 
+diagonalRows =: 3 : 0
+  (diagonalOf state) ,: (diagonalOf |. state)
+)
+
 allRows =: 3 : 0
-  state , (|: state) , (diagonalOf state) ,: (diagonalOf |. state)
+  state , (|: state) , diagonalRows ''
 )
 
 rowWinner =: 3 : 0
