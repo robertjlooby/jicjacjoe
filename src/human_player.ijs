@@ -1,8 +1,7 @@
 coclass 'HumanPlayer'
 
 create =: 3 : 0
-  io =: >0{y
-  symbol =: >1{y
+  'io symbol' =: y
 )
 
 getMove =: 3 : 0
