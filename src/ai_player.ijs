@@ -2,7 +2,15 @@ coclass 'AIPlayer'
 
 create =: 3 : 0
   'board symbol oppSymbol' =: y
+  cachedMovesRow =: initializeSparseArray size__board
+  cachedMovesCol =: initializeSparseArray size__board
+  cachedMovesOutcome =: initializeSparseArray size__board
 )
+
+initializeSparseArray =: 3 : 0
+  1$. (3 ^ *: y); 0; _
+)
+
 
 evaluateScore =: 3 : 0
   state__board =: y
@@ -26,11 +34,19 @@ getMove =: 3 : 0
 
 minimax =: 4 : 0
   'moveSymbol alpha beta' =. x
-  if. symbol = moveSymbol do.
+  key =. hashCodeFor__board y
+  if. -. _ = key { cachedMovesOutcome do.
+    (key { cachedMovesRow); (key { cachedMovesCol); (key { cachedMovesOutcome)
+    return.
+  elseif. symbol = moveSymbol do.
     move =. (alpha; beta) getMaxMove y
-  else.
+  elseif. 1 do.
     move =. (alpha; beta) getMinMove y
   end.
+  'row col outcome' =. move
+  cachedMovesRow =: row key } cachedMovesRow
+  cachedMovesCol =: col key } cachedMovesCol
+  cachedMovesOutcome =: outcome key } cachedMovesOutcome
   move
 )
 
