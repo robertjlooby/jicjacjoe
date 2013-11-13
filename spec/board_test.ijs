@@ -97,3 +97,12 @@ test_resetsSizeWhenAskedForFull =: 3 : 0
   assert full__defaultBoard ''
   assert 4 -: size__defaultBoard
 )
+
+test_itComputesTheHashCodeOfAGivenState =: 3 : 0
+  assert 0 -: hashCodeFor__defaultBoard 3 3 $ '-'
+  assert 1 -: hashCodeFor__defaultBoard 3 3 $ 'x--------'
+  assert 2 -: hashCodeFor__defaultBoard 3 3 $ 'o--------'
+  assert 6563 -: hashCodeFor__defaultBoard 3 3 $ 'o-------x'
+  assert (<: 3 ^ 9) -: hashCodeFor__defaultBoard 3 3 $ 'o'
+  assert (<: 3 ^ 16) -: hashCodeFor__defaultBoard 4 4 $ 'o'
+)

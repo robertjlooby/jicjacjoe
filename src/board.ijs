@@ -37,4 +37,12 @@ full =: 3 : 0
   -. hasEmptySpot
 )
 
+hashCodeFor =: 3 : 0
+  count =. # , y
+  values =. 3 ^ i. count
+  xvalue =. +/ values * 'x' = , y
+  ovalue =. +/ values * 2 * 'o' = , y
+  xvalue + ovalue
+)
+
 destroy =: codestroy
