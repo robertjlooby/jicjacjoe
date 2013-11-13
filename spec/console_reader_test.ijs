@@ -14,10 +14,10 @@ test_itReadsFromTheGivenInputStream =: 3 : 0
   test_text =: 'this is some test text'
   test_text (1!:2) fileno
 
-  assert test_text = read__reader ''
+  assert test_text -: read__reader ''
 )
 
 test_itDefaultsToReadingFromSTDIN =: 3 : 0
   reader =: '' conew 'ConsoleReader'
-  assert fileno__reader = 3
+  assert fileno__reader -: 3
 )

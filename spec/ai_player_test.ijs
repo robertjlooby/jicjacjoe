@@ -9,34 +9,34 @@ before_each =: 3 : 0
 )
 
 test_playerInitsWithBoardAndSymAndOppSym =: 3 : 0
-  assert board__xplayer = board
-  assert board__oplayer = board
+  assert board__xplayer -: board
+  assert board__oplayer -: board
 
-  assert symbol__xplayer = 'x'
-  assert symbol__oplayer = 'o'
+  assert symbol__xplayer -: 'x'
+  assert symbol__oplayer -: 'o'
 
-  assert oppSymbol__xplayer = 'o'
-  assert oppSymbol__oplayer = 'x'
+  assert oppSymbol__xplayer -: 'o'
+  assert oppSymbol__oplayer -: 'x'
 )
 
 test_evaluateScoreIs1ForWin =: 3 : 0
-  assert 1 = evaluateScore__xplayer 3 3 $ 'x'
-  assert 1 = evaluateScore__oplayer 3 3 $ 'o'
+  assert 1 -: evaluateScore__xplayer 3 3 $ 'x'
+  assert 1 -: evaluateScore__oplayer 3 3 $ 'o'
 )
 
 test_evaluateScoreIsNeg1ForLoss =: 3 : 0
-  assert _1 = evaluateScore__xplayer 3 3 $ 'o'
-  assert _1 = evaluateScore__oplayer 3 3 $ 'x'
+  assert _1 -: evaluateScore__xplayer 3 3 $ 'o'
+  assert _1 -: evaluateScore__oplayer 3 3 $ 'x'
 )
 
 test_evaluateScoreIs0ForTie =: 3 : 0
-  assert 0 = evaluateScore__xplayer 3 3 $ 'xxoooxxxo'
-  assert 0 = evaluateScore__oplayer 3 3 $ 'xxoooxxxo'
+  assert 0 -: evaluateScore__xplayer 3 3 $ 'xxoooxxxo'
+  assert 0 -: evaluateScore__oplayer 3 3 $ 'xxoooxxxo'
 )
 
 test_evaluateScoreIsDashForUnfinishedGame =: 3 : 0
-  assert '-' = evaluateScore__xplayer 3 3 $ '-'
-  assert '-' = evaluateScore__oplayer 3 3 $ '-'
+  assert '-' -: evaluateScore__xplayer 3 3 $ '-'
+  assert '-' -: evaluateScore__oplayer 3 3 $ '-'
 )
 
 test_shouldChooseCornerCellWhenBoardEmpty =: 3 : 0

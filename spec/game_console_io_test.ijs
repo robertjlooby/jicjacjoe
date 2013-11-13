@@ -10,8 +10,8 @@ before_all =: 3 : 0
 )
 
 test_initializesWithReaderAndWriter =: 3 : 0
-  assert reader__io = reader
-  assert writer__io = writer
+  assert reader__io -: reader
+  assert writer__io -: writer
 )
 
 test_promptForAI =: 3 : 0
@@ -66,25 +66,25 @@ test_itGetsNo =: 3 : 0
 test_itGetsX =: 3 : 0
   nextLine__reader =: 'X', LF
   
-  assert 'x' = getXorO__io ''
+  assert 'x' -: getXorO__io ''
 )
 
 test_itGetsx =: 3 : 0
   nextLine__reader =: 'x', LF
   
-  assert 'x' = getXorO__io ''
+  assert 'x' -: getXorO__io ''
 )
 
 test_itGetso =: 3 : 0
   nextLine__reader =: 'whhhhhat?'
   
-  assert 'o' = getXorO__io ''
+  assert 'o' -: getXorO__io ''
 )
 
 test_itGetsTheBoardSize =: 3 : 0
   nextLine__reader =: '5', LF
   
-  assert 5 = getBoardSize__io ''
+  assert 5 -: getBoardSize__io ''
 )
 
 test_itDefaultsToABoardSizeOf3 =: 3 : 0

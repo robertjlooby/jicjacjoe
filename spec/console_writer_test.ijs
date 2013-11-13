@@ -13,10 +13,10 @@ after_each =: 3 : 0
 test_itWritesToTheGivenOutputStreamWithLFs =: 3 : 0
   test_text =. 'this is some test text'
   write__writer test_text
-  assert (1!:1 fileno) = test_text, LF
+  assert (1!:1 fileno) -: test_text, LF
 )
 
 test_itDefaultsToWritingToSTDOUT =: 3 : 0
   writer =: '' conew 'ConsoleWriter'
-  assert fileno__writer = 4
+  assert fileno__writer -: 4
 )

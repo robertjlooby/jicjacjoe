@@ -3,13 +3,13 @@ load 'src/board.ijs'
 
 test_createSizeDefaultsTo3 =: 3 : 0
   B =. '' conew 'Board'
-  assert 3 = size__B
+  assert 3 -: size__B
 )
   
 test_createInitsWithSizeEmptyboard =: 3 : 0
   B =. 5 conew 'Board'
-  assert 5 = size__B
-  assert 5 5 $ '-' -: state__B
+  assert 5 -: size__B
+  assert (5 5 $ '-') -: state__B
 )
 
 test_winnerFalseForEmptyBoard =: 3 : 0

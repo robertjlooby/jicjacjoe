@@ -10,8 +10,8 @@ before_all =: 3 : 0
 )
 
 test_initializesWithReaderAndWriter =: 3 : 0
-  assert reader__io = reader
-  assert writer__io = writer
+  assert reader__io -: reader
+  assert writer__io -: writer
 )
 
 test_promptForMove =: 3 : 0
@@ -26,5 +26,5 @@ test_notifyInvalidCell =: 3 : 0
 
 test_readMove =: 3 : 0
   nextLine__reader =: '4'
-  assert '4' = readMove__io ''
+  assert '4' -: readMove__io ''
 )
