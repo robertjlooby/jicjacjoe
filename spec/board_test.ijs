@@ -85,3 +85,15 @@ test_fullReturnsTrueForAFullBoard =: 3 : 0
   state__defaultBoard =. 3 3 $ 'xxoooxxox'
   assert full__defaultBoard ''
 )
+
+test_resetsSizeWhenAskedForWinner =: 3 : 0
+  state__defaultBoard =. 4 4 $ '---x--x--x--x---'
+  assert winner__defaultBoard 'x'
+  assert 4 -: size__defaultBoard
+)
+
+test_resetsSizeWhenAskedForFull =: 3 : 0
+  state__defaultBoard =. 4 4 $ 'xxxoxxooxooooxxx'
+  assert full__defaultBoard ''
+  assert 4 -: size__defaultBoard
+)

@@ -9,28 +9,30 @@ move =: 4 : 0
   state =: y (<x) } state
 )
 
-diagonalOf =: 3 : 0
+diagonalOf =. 3 : 0
   obliques =. </. y
   > (<: size) { obliques
 )
 
-diagonalRows =: 3 : 0
+diagonalRows =. 3 : 0
   (diagonalOf state) ,: (diagonalOf |. state)
 )
 
-allRows =: 3 : 0
+allRows =. 3 : 0
   state , (|: state) , diagonalRows ''
 )
 
-rowWinner =: 3 : 0
+rowWinner =. 3 : 0
   +./ *./"1 y = allRows ''
 )
 
 winner =: 3 : 0
+  size =: # state
   rowWinner y
 )
 
 full =: 3 : 0
+  size =: # state
   hasEmptySpot =. +./ , '-' = state
   -. hasEmptySpot
 )
