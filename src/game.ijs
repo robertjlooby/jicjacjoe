@@ -1,9 +1,7 @@
 coclass 'Game'
 
 create =: 3 : 0
-  board =: > 0{y
-  boardDisplay =: > 1{y
-  players =: > 2{y
+  'board boardDisplay players' =: y
 )
 
 takeTurn =: 3 : 0
