@@ -19,7 +19,7 @@ evaluateScore =: 3 : 0
 )
 
 getMove =: 3 : 0
-  size =: {. $ y
+  size =: # y
   move =. (symbol; _1; 1) minimax y
   > }: move
 )

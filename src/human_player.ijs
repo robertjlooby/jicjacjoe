@@ -6,7 +6,7 @@ create =: 3 : 0
 )
 
 getMove =: 3 : 0
-  size =. {. $ y
+  size =. # y
   maxMove =. <: *: size
   promptForMove__io ''
   moveStr =. '[-_]?[[:digit:]]+' rxfirst '', readMove__io ''
