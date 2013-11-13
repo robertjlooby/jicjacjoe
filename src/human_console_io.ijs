@@ -1,7 +1,8 @@
 coclass 'HumanConsoleIO'
 
 create =: 3 : 0
-  'reader writer' =: y
+  reader =: 0{y
+  writer =: 1{y
 )
 
 promptForMove =: 3 : 0

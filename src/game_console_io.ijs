@@ -1,7 +1,8 @@
 coclass 'GameConsoleIO'
 
 create =: 3 : 0
-  'reader writer' =: y
+  reader =: 0{y
+  writer =: 1{y
 )
 
 promptForAI =: 3 : 0
