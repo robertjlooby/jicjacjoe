@@ -4,6 +4,12 @@ load 'src/console_writer.ijs'
 before_each =: 3 : 0
   fileno =: 1!:21 <'temp'
   writer =: fileno conew 'ConsoleWriter'
+  defaultWriter =: '' conew 'ConsoleWriter'
+)
+
+after_each =: 3 : 0
+  destroy__writer ''
+  destroy__defaultWriter ''
 )
 
 after_each =: 3 : 0
@@ -17,6 +23,5 @@ test_itWritesToTheGivenOutputStreamWithLFs =: 3 : 0
 )
 
 test_itDefaultsToWritingToSTDOUT =: 3 : 0
-  writer =: '' conew 'ConsoleWriter'
-  assert fileno__writer -: 4
+  assert fileno__defaultWriter -: 4
 )

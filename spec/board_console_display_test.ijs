@@ -21,6 +21,11 @@ before_all =: 3 : 0
   emptyBoard4 =: emptyRow4 , rowDiv4 , emptyRow4 , rowDiv4 , emptyRow4, rowDiv4, emptyRow4
 )
 
+after_all =: 3 : 0
+  destroy__mockwriter ''
+  destroy__BCD ''
+)
+
 test_celForX =: 3 : 0
   assert xcel__BCD -: celFor__BCD 'x'
 )

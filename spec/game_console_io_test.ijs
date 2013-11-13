@@ -9,6 +9,12 @@ before_all =: 3 : 0
   io =: (reader, writer) conew 'GameConsoleIO'
 )
 
+after_all =: 3 : 0
+  destroy__reader ''
+  destroy__writer ''
+  destroy__io ''
+)
+
 test_initializesWithReaderAndWriter =: 3 : 0
   assert reader__io -: reader
   assert writer__io -: writer

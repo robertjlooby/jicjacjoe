@@ -8,6 +8,12 @@ before_each =: 3 : 0
   oplayer =: (board; 'o'; 'x') conew 'AIPlayer'
 )
 
+after_each =: 3 : 0
+  destroy__board ''
+  destroy__xplayer ''
+  destroy__oplayer ''
+)
+
 test_playerInitsWithBoardAndSymAndOppSym =: 3 : 0
   assert board__xplayer -: board
   assert board__oplayer -: board

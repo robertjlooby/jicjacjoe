@@ -18,6 +18,14 @@ before_each =: 3 : 0
   game =: (board; boardDisplay; <players) conew 'Game'
 )
 
+after_each =: 3 : 0
+  destroy__board ''
+  destroy__boardDisplay ''
+  destroy__player1 ''
+  destroy__player2 ''
+  destroy__game ''
+)
+
 test_initializesWithBoardBoardIOAndPlayers =: 3 : 0
   assert board -: board__game
   assert boardDisplay -: boardDisplay__game

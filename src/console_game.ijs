@@ -25,8 +25,10 @@ console_game =: 3 : 0
   player1 =: (humanConsoleIO; symbol) conew 'HumanPlayer'
 
   promptForAI__gameConsoleIO ''
-  if. getYorN__gameConsoleIO '' do.
-    player2 =: (('' conew 'Board'); oppSymbol; symbol) conew 'AIPlayer'
+  playAi =. getYorN__gameConsoleIO ''
+  if. playAi do.
+    aiBoard =: ('' conew 'Board')
+    player2 =: (aiBoard; oppSymbol; symbol) conew 'AIPlayer'
   else.
     player2 =: (humanConsoleIO; oppSymbol) conew 'HumanPlayer'
   end.
@@ -52,7 +54,22 @@ console_game =: 3 : 0
   end.
 
   promptForPlayAgain__gameConsoleIO ''
-  if. getYorN__gameConsoleIO '' do.
+  playAgain =. getYorN__gameConsoleIO ''
+
+  destroy__humanConsoleIO ''
+  destroy__boardConsoleDisplay ''
+  destroy__writer ''
+  destroy__reader ''
+  destroy__gameConsoleIO ''
+  destroy__player1 ''
+  destroy__player2 ''
+  destroy__board ''
+  destroy__game ''
+  if. playAi do.
+    destroy__aiBoard ''
+  end.
+
+  if. playAgain do.
     console_game ''
   end.
 )

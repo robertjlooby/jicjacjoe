@@ -8,6 +8,12 @@ before_each =: 3 : 0
   oplayer =: (mockio; 'o') conew 'HumanPlayer'
 )
 
+after_each =: 3 : 0
+  destroy__mockio ''
+  destroy__xplayer ''
+  destroy__oplayer ''
+)
+
 test_playerInitializesWithIOAndSymbol =: 3 : 0
   assert io__xplayer -: mockio
   assert symbol__xplayer -: 'x'

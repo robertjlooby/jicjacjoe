@@ -4,6 +4,12 @@ load 'src/console_reader.ijs'
 before_each =: 3 : 0
   fileno =: 1!:21 <'temp'
   reader =: fileno conew 'ConsoleReader'
+  defaultReader =: '' conew 'ConsoleReader'
+)
+
+after_each =: 3 : 0
+  destroy__reader ''
+  destroy__defaultReader ''
 )
 
 after_each =: 3 : 0
@@ -18,6 +24,5 @@ test_itReadsFromTheGivenInputStream =: 3 : 0
 )
 
 test_itDefaultsToReadingFromSTDIN =: 3 : 0
-  reader =: '' conew 'ConsoleReader'
-  assert fileno__reader -: 3
+  assert fileno__defaultReader -: 3
 )
