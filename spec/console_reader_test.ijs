@@ -24,5 +24,5 @@ test_itReadsFromTheGivenInputStream =: 3 : 0
 )
 
 test_itDefaultsToReadingFromSTDIN =: 3 : 0
-  assert fileno__defaultReader -: 3
+  assert fileno__defaultReader -: _
 )

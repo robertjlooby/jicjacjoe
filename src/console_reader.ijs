@@ -3,12 +3,17 @@ coclass 'ConsoleReader'
 create =: 3 : 0
   fileno =: y
   if. -. # fileno do.
-    fileno =: 3
+    fileno =: _
   end.
 )
 
 read =: 3 : 0
-  (1!:1) fileno
+  if. fileno -: _ do.
+    result =. shell 'read tttresult; echo "$tttresult"'
+  else.
+    result =. (1!:1) fileno
+  end.
+  result
 )
 
 destroy =: codestroy
