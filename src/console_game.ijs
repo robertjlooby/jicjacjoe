@@ -26,13 +26,6 @@ console_game =: 3 : 0
 
   promptForAI__gameConsoleIO ''
   playAi =. getYorN__gameConsoleIO ''
-  if. playAi do.
-    aiBoard =: ('' conew 'Board')
-    player2 =: (aiBoard; oppSymbol; symbol) conew 'AIPlayer'
-  else.
-    player2 =: (humanConsoleIO; oppSymbol) conew 'HumanPlayer'
-  end.
-  players =: player1, player2
 
   promptForPlayFirst__gameConsoleIO ''
   if. -. getYorN__gameConsoleIO ''  do.
@@ -42,6 +35,13 @@ console_game =: 3 : 0
   promptForBoardSize__gameConsoleIO ''
   boardSize =: getBoardSize__gameConsoleIO ''
   board =: boardSize conew 'Board'
+  if. playAi do.
+    aiBoard =: (boardSize conew 'Board')
+    player2 =: (aiBoard; oppSymbol; symbol) conew 'AIPlayer'
+  else.
+    player2 =: (humanConsoleIO; oppSymbol) conew 'HumanPlayer'
+  end.
+  players =: player1, player2
 
   game =: (board; boardConsoleDisplay; <players) conew 'Game'
 
