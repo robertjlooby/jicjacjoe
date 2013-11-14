@@ -28,9 +28,7 @@ console_game =: 3 : 0
   playAi =. getYorN__gameConsoleIO ''
 
   promptForPlayFirst__gameConsoleIO ''
-  if. -. getYorN__gameConsoleIO ''  do.
-    players =: |. players
-  end.
+  playFirst =. getYorN__gameConsoleIO ''
 
   promptForBoardSize__gameConsoleIO ''
   boardSize =: getBoardSize__gameConsoleIO ''
@@ -42,6 +40,9 @@ console_game =: 3 : 0
     player2 =: (humanConsoleIO; oppSymbol) conew 'HumanPlayer'
   end.
   players =: player1, player2
+  if. -. playFirst do.
+    players =: |. players
+  end.
 
   game =: (board; boardConsoleDisplay; <players) conew 'Game'
 
