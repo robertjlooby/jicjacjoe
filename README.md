@@ -30,3 +30,5 @@ How To Play The Game
 1. run `<your J directory>/bin/jconsole`
 2. run `load 'src/play_ttt.ijs'`
 3. run `playTTT ''`
+
+Note: Even with alpha-beta pruning and caching, the AI on a 4x4 is still too slow to play
