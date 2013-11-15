@@ -2,9 +2,13 @@ coclass 'AIPlayer'
 
 create =: 3 : 0
   'board symbol oppSymbol' =: y
-  cachedMovesRow =: initializeSparseArray size__board
-  cachedMovesCol =: initializeSparseArray size__board
-  cachedMovesOutcome =: initializeSparseArray size__board
+  initializeCaches size__board
+)
+
+initializeCaches =: 3 : 0
+  cachedMovesRow =: initializeSparseArray y
+  cachedMovesCol =: initializeSparseArray y
+  cachedMovesOutcome =: initializeSparseArray y
 )
 
 initializeSparseArray =: 3 : 0
@@ -26,6 +30,21 @@ evaluateScore =: 3 : 0
   score
 )
 
+isCached =: 3 : 0
+  -. _ = y { cachedMovesOutcome
+)
+
+getCachedMove =: 3 : 0
+    (y { cachedMovesRow); (y { cachedMovesCol); (y { cachedMovesOutcome)
+)
+
+putCachedMove =: 4 : 0
+  'row col outcome' =. y
+  cachedMovesRow =: row x } cachedMovesRow
+  cachedMovesCol =: col x } cachedMovesCol
+  cachedMovesOutcome =: outcome x } cachedMovesOutcome
+)
+
 getMove =: 3 : 0
   size =: # y
   move =. (symbol; _1; 1) minimax y
@@ -35,18 +54,17 @@ getMove =: 3 : 0
 minimax =: 4 : 0
   'moveSymbol alpha beta' =. x
   key =. hashCodeFor__board y
-  if. -. _ = key { cachedMovesOutcome do.
-    (key { cachedMovesRow); (key { cachedMovesCol); (key { cachedMovesOutcome)
+
+  if. isCached key do.
+    getCachedMove key
     return.
   elseif. symbol = moveSymbol do.
     move =. (alpha; beta) getMaxMove y
   elseif. 1 do.
     move =. (alpha; beta) getMinMove y
   end.
-  'row col outcome' =. move
-  cachedMovesRow =: row key } cachedMovesRow
-  cachedMovesCol =: col key } cachedMovesCol
-  cachedMovesOutcome =: outcome key } cachedMovesOutcome
+
+  key putCachedMove move
   move
 )
 
