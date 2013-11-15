@@ -8,7 +8,7 @@ cocurrent 'ttt'
 initializeIO =: 3 : 0
   reader =: '' conew 'ConsoleReader' 
   writer =: '' conew 'ConsoleWriter'
-  gameConsoleIO =: (reader, writer) conew 'GameConsoleIO'
+  gameConsoleIO =: (reader; <writer) conew 'GameConsoleIO'
   reader; writer; <gameConsoleIO
 )
 

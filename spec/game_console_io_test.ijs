@@ -6,7 +6,7 @@ load 'src/game_console_io.ijs'
 before_all =: 3 : 0
   reader =: '' conew 'MockReader'
   writer =: '' conew 'MockWriter'
-  io =: (reader, writer) conew 'GameConsoleIO'
+  io =: (reader; <writer) conew 'GameConsoleIO'
 )
 
 after_all =: 3 : 0

@@ -6,7 +6,7 @@ load 'src/human_console_io.ijs'
 before_all =: 3 : 0
   reader =: '' conew 'MockReader'
   writer =: '' conew 'MockWriter'
-  io =: (reader, writer) conew 'HumanConsoleIO'
+  io =: (reader; <writer) conew 'HumanConsoleIO'
 )
 
 after_all =: 3 : 0
