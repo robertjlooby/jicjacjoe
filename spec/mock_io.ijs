@@ -38,8 +38,8 @@ notifyWinner =: 3 : 0
   pushCalled 'notifyWinner'
 )
 
-promptForAI =: 3 : 0
-  pushCalled 'promptForAI'
+promptForPlayAI =: 3 : 0
+  pushCalled 'promptForPlayAI'
 )
 
 promptForBoardSize =: 3 : 0
@@ -56,6 +56,10 @@ promptForPlayAgain =: 3 : 0
 
 promptForPlayFirst =: 3 : 0
   pushCalled 'promptForPlayFirst'
+)
+
+promptForPlayerSymbol =: 3 : 0
+  pushCalled 'promptForPlayerSymbol'
 )
 
 readMove =: 3 : 0

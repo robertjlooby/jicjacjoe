@@ -20,8 +20,19 @@ test_initializesWithReaderAndWriter =: 3 : 0
   assert writer__io -: writer
 )
 
-test_promptForAI =: 3 : 0
-  promptForAI__io ''
+test_notifyWinner =: 3 : 0
+  notifyWinner__io '-'
+  assert 'a tie' matches lastwritten__writer
+
+  notifyWinner__io 'x'
+  assert 'x won' matches lastwritten__writer
+
+  notifyWinner__io 'o'
+  assert 'o won' matches lastwritten__writer
+)
+
+test_promptForPlayAI =: 3 : 0
+  promptForPlayAI__io ''
   assert 'AI.*opponent' matches lastwritten__writer
 )
 

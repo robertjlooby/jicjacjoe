@@ -8,55 +8,41 @@ load 'src/game_console_io.ijs'
 load 'src/human_console_io.ijs'
 load 'src/human_player.ijs'
 
-console_game =: 3 : 0
+coclass 'ConsoleGame'
+
+create =: 3 : 0
+  'playAI symbol oppSymbol playFirst boardSize' =: y
   writer =: '' conew 'ConsoleWriter'
   reader =: '' conew 'ConsoleReader' 
   gameConsoleIO =: (reader, writer) conew 'GameConsoleIO'
   humanConsoleIO =: (reader, writer) conew 'HumanConsoleIO'
   boardConsoleDisplay =: writer conew 'BoardConsoleDisplay'
-
-  promptForPlayerSymbol__gameConsoleIO ''
-  symbol =: getXorO__gameConsoleIO ''
-  if. symbol = 'x' do.
-    oppSymbol =. 'o'
-  else.
-    oppSymbol =. 'x'
-  end.
-  player1 =: (humanConsoleIO; symbol) conew 'HumanPlayer'
-
-  promptForAI__gameConsoleIO ''
-  playAi =. getYorN__gameConsoleIO ''
-
-  promptForPlayFirst__gameConsoleIO ''
-  playFirst =. getYorN__gameConsoleIO ''
-
-  promptForBoardSize__gameConsoleIO ''
-  boardSize =: getBoardSize__gameConsoleIO ''
   board =: boardSize conew 'Board'
-  if. playAi do.
-    aiBoard =: (boardSize conew 'Board')
-    player2 =: (aiBoard; oppSymbol; symbol) conew 'AIPlayer'
-  else.
-    player2 =: (humanConsoleIO; oppSymbol) conew 'HumanPlayer'
-  end.
-  players =: player1, player2
-  if. -. playFirst do.
-    players =: |. players
-  end.
+  players =: initializePlayers humanConsoleIO
 
   game =: (board; boardConsoleDisplay; <players) conew 'Game'
+)
 
-  winner =: play__game ''
-
-  if. winner = '-' do.
-    write__writer 'It was a tie.'
+initializePlayers =: 3 : 0
+  player1 =: (y; symbol) conew 'HumanPlayer'
+  if. playAI do.
+    aiBoard =: boardSize conew 'Board'
+    player2 =: (aiBoard; oppSymbol; symbol) conew 'AIPlayer'
   else.
-    write__writer 'Player ', winner, ' won.'
+    player2 =: (y; oppSymbol) conew 'HumanPlayer'
   end.
+  players =. player1, player2
+  if. -. playFirst do.
+    players =. |. players
+  end.
+  players
+)
 
-  promptForPlayAgain__gameConsoleIO ''
-  playAgain =. getYorN__gameConsoleIO ''
+play =: 3 : 0
+  play__game ''
+)
 
+destroy =: 3 : 0
   destroy__humanConsoleIO ''
   destroy__boardConsoleDisplay ''
   destroy__writer ''
@@ -66,13 +52,8 @@ console_game =: 3 : 0
   destroy__player2 ''
   destroy__board ''
   destroy__game ''
-  if. playAi do.
+  if. playAI do.
     destroy__aiBoard ''
   end.
-
-  if. playAgain do.
-    console_game ''
-  end.
+  codestroy ''
 )
-
-console_game ''

@@ -28,4 +28,5 @@ How To Play The Game
 --------------------
 
 1. run `<your J directory>/bin/jconsole`
-2. run 'load `src/console_game.ijs'`
+2. run `load 'src/play_ttt.ijs'`
+3. run `playTTT ''`

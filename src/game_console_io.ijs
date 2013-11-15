@@ -5,7 +5,15 @@ create =: 3 : 0
   writer =: 1{y
 )
 
-promptForAI =: 3 : 0
+notifyWinner =: 3 : 0
+  if. y = '-' do.
+    write__writer 'It was a tie.'
+  else.
+    write__writer 'Player ', y, ' won.'
+  end.
+)
+
+promptForPlayAI =: 3 : 0
   write__writer 'Would you like to play against an AI opponent? (yes or no)'
 )
 
